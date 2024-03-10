@@ -6,6 +6,7 @@ import userReducer from "./common/UserReducer";
 import { allowSubmit } from "./common/Helpers";
 import PasswordComparison from "./common/PasswordComparison";
 
+// logout component
 const Registration: FC<ModalProps> = ({ isOpen, onClickToggle }) => {
   const [
     { userName, password, email, passwordConfirm, resultMsg, isSubmitDisabled },

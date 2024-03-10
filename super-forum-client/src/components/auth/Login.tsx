@@ -6,6 +6,7 @@ import { allowSubmit } from "./common/Helpers";
 import { useDispatch } from "react-redux";
 import { UserProfileSetType } from "../../store/user/Reducer";
 
+// login component that utilizes modal
 const Login: FC<ModalProps> = ({ isOpen, onClickToggle }) => {
   const [
     { userName, password, resultMsg, isSubmitDisabled },
