@@ -50,6 +50,7 @@ const Registration: FC<ModalProps> = ({ isOpen, onClickToggle }) => {
       className="modal-menu"
       isOpen={isOpen}
       onRequestClose={onClickToggle}
+      ariaHideApp={false}
       shouldCloseOnOverlayClick={true}
     >
       <form>

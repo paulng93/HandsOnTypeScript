@@ -59,6 +59,7 @@ const Login: FC<ModalProps> = ({ isOpen, onClickToggle }) => {
     <ReactModal
       className="modal-menu"
       isOpen={isOpen}
+      ariaHideApp={false}
       onRequestClose={onClickToggle}
       shouldCloseOnOverlayClick={true}
     >
