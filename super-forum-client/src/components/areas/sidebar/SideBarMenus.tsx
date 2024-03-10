@@ -7,12 +7,12 @@ import {
     faSignInAlt,
     faSignOutAlt,
   } from "@fortawesome/free-solid-svg-icons";
-import Registration from "../auth/Registration";
-import Login from "../auth/Login";
-import Logout from "../auth/Logout";
-import { AppState } from "../../store/AppState";
+import Registration from "../../auth/Registration";
+import Login from "../../auth/Login";
+import Logout from "../../auth/Logout";
+import { AppState } from "../../../store/AppState";
 import { useDispatch } from "react-redux";
-import { UserProfileSetType } from "../../store/user/Reducer";
+import { UserProfileSetType } from "../../../store/user/Reducer";
 
 const SideBarMenus = () => {
     const [showRegister, setShowRegister] = useState(false);

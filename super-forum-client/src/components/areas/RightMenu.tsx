@@ -1,16 +1,13 @@
 import React from "react";
 import { useWindowDimensions } from "../../hooks/useWindowDimensions";
-import SideBarMenus from "./SideBarMenus";
 
-const SideBar = () => {
+const RightMenu = () => {
     const { width } = useWindowDimensions();
     if (width <= 768)
     {
         return null;
     }
-    return (<div className="sidebar">
-        <SideBarMenus/>
-    </div>)
+    return <main className="rightmenu">Right menu</main>
 }
 
-export default SideBar;
+export default RightMenu;
