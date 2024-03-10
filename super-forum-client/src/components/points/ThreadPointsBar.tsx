@@ -8,11 +8,13 @@ export interface ThreadPointsBarProps {
   responseCount?: number;
 }
 
+// shows the thread count in bar format when full screen
 const ThreadPointsBar: FC<ThreadPointsBarProps> = ({
   points,
   responseCount,
 }) => {
   const { width } = useWindowDimensions();
+  // logic here
   if (width > 768) {
     return (
       <div className="threadcard-points">

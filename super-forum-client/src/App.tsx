@@ -3,6 +3,7 @@ import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import Home from './components/routes/Home';
 
+// define routes here
 function App() {
   return (
     <Routes>

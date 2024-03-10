@@ -22,6 +22,7 @@ const ThreadCard: FC<ThreadCardProps> = ({ thread }) => {
     navigate("/thread/" + thread.id);
   };
 
+  // returns html to show the response
   const getResponses = (thread: Thread) => {
     if (width <= 768) {
       return (

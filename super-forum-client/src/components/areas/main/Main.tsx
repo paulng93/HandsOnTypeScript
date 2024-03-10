@@ -16,6 +16,7 @@ const Main = () => {
     );
   
     // updating list of cards threadcards if we get a new category Id
+    // Creates the Thread card here by passing in the thread
     useEffect(() => {
       console.log("main categoryId", categoryId);
   

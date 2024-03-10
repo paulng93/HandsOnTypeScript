@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { ThreadPointsBarProps } from "./ThreadPointsBar";
 
+// show thread count in line when on mobile via the ThreadCard.tsx
+// logic to show hide is in parent
 const ThreadPointsInline: FC<ThreadPointsBarProps> = ({
   points,
   responseCount,
