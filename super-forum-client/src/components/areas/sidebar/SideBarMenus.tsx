@@ -13,6 +13,7 @@ import Logout from "../../auth/Logout";
 import { AppState } from "../../../store/AppState";
 import { useDispatch } from "react-redux";
 import { UserProfileSetType } from "../../../store/user/Reducer";
+import { Link } from "react-router-dom";
 
 const SideBarMenus = () => {
     const [showRegister, setShowRegister] = useState(false);
@@ -53,7 +54,9 @@ const SideBarMenus = () => {
             <ul>
                 <li>
                     <FontAwesomeIcon icon={faUser} />
-                    <span className="menu-name">{user?.userName}</span>
+                    <span className="menu-name">
+                        <Link to={`/userprofile/${user?.id}`}>{user?.userName}</Link>
+                    </span>
                 </li>
                 <li>
                     <FontAwesomeIcon icon={faRegistered} />

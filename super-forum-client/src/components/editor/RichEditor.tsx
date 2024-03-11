@@ -1,8 +1,16 @@
 import React, { useState, useCallback, useMemo, useEffect, FC } from "react";
+
+// slate related import for text editor UI
 import { Editable, withReact, useSlate, Slate } from "slate-react";
 import { Editor, Transforms, createEditor, Node } from "slate";
+
+// tool that helps build keyboard shortcuts for the editor
 import isHotkey from "is-hotkey";
+
+// allow editor to save the edits that have occurred on the correct order
 import { withHistory } from "slate-history";
+
+// controls to build out editor UI
 import { Button, Toolbar } from "./RichTextControls";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -18,18 +26,23 @@ import {
 import "./RichEditor.css";
 import { JSX } from "react/jsx-runtime";
 
+// dictionary that contains various shortcut keys
 const HOTKEYS: { [keyName: string]: string } = {
   "mod+b": "bold",
   "mod+i": "italic",
   "mod+u": "underline",
   "mod+`": "code",
 };
+
+//initial value of text editor
 const initialValue = [
   {
     type: "paragraph",
     children: [{ text: "Enter your post here." }],
   },
 ];
+
+// used to differentiate entry is paragraph or list of text
 const LIST_TYPES = ["numbered-list", "bulleted-list"];
 
 interface RichEditorProps {
@@ -37,22 +50,32 @@ interface RichEditorProps {
 }
 
 const RichEditor: FC<RichEditorProps> = ({ existingBody }) => {
+
+  // main text value is stored here as a NODE[]
   const [value, setValue] = useState<Node[]>(initialValue);
+
+  // used to internally render a larger piece of text, Element is a multi line piece of text
   const renderElement = useCallback((props: JSX.IntrinsicAttributes & { attributes: any; children: any; element: any; }) => <Element {...props} />, []);
+
+  // render smaller bits of text, leaf is smaller snippet of text
   const renderLeaf = useCallback((props: JSX.IntrinsicAttributes & { attributes: any; children: any; leaf: any; }) => <Leaf {...props} />, []);
+
+  // memoization 
   const editor = useMemo(() => withHistory(withReact(createEditor())), []);
 
+  // hook  to set the initial value of editor
   useEffect(() => {
     if (existingBody) {
       setValue([
         {
-          //type: "paragraph",
+          type: "paragraph",
           text: existingBody,
         },
       ]);
     }
   }, []);
 
+  // used to set the local value when state is changed in the UI.
   const onChangeEditorValue = (val: Node[]) => {
     setValue(val);
   };
@@ -90,6 +113,8 @@ const RichEditor: FC<RichEditorProps> = ({ existingBody }) => {
   );
 };
 
+// function that generates a button in the UI
+// also associates the actual formatter that triggers whe  that specific button is clicked 
 const MarkButton = ({ format, icon }: { format: string; icon: string }) => {
   const editor = useSlate();
   let thisIcon = faBold;
@@ -113,11 +138,13 @@ const MarkButton = ({ format, icon }: { format: string; icon: string }) => {
   );
 };
 
+// determine if a formatter has already been applied 
 const isMarkActive = (editor: Editor, format: string) => {
   const marks = Editor.marks(editor);
   return marks ? marks[format] === true : false;
 };
 
+// toggle applied format
 const toggleMark = (editor: Editor, format: string) => {
   const isActive = isMarkActive(editor, format);
 
